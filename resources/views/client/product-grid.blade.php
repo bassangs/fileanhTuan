@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Trang sản phẩm</h2>
+                    <h2>Dòng xe</h2>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="sidebar__item">
                         <div class="latest-product__text">
-                            <h4>Sản phẩm mới</h4>
+                            <h4>Dòng xe mới</h4>
                             <div class="latest-product__slider owl-carousel">
                                 <div class="latest-prdouct__slider__item">
                                     @foreach ($product_slide_1 as $product)

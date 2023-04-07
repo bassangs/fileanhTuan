@@ -40,7 +40,7 @@
                         @endforeach
                         {!! $products->links() !!}
                     @else
-                        Hiện hãng này chưa có sản phẩm nào
+                        Hiện hãng này chưa có xe nào
                     @endif
                 </div>
             </div>

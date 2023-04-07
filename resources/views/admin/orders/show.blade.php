@@ -30,7 +30,7 @@
         <table class="table table-striped table-bordered table-hover" id="menu-table">
             <thead>
                 <tr align="center">
-                    <th>Sản phẩm</th>
+                    <th>Dòng xe</th>
                     <th>Số lượng</th>
                     <th>Giá tiền</th>
                 </tr>

@@ -22,17 +22,17 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <p style="font-size: 2rem;line-height:1.5;text-align:justify;">
-                    <b>Fashion Store</b> là một website chuyên cung cấp các loại quần áo như áo khoác, áo thun, áo sơ mi,.... Với mong muốn mang tới sự trẻ trung cho mọi người.
+                    <b>Xe Tốt</b> là một website chuyên cung cấp các dòng xe hơi cao cấp, mang đến cho người dùng trải nghiệm tuyệt với nhất trên mọi địa hình
                 </p>
                 <p style="font-size: 2rem;line-height:1.5;text-align:justify;">
                     Thông tin liên hệ
                 </p>
                 <p style="font-size: 1.3rem;line-height:1.5;text-align:justify;">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ: {{ $setting->address }}
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ: Hà Nội
                     <br>
-                    <i class="fa fa-phone" aria-hidden="true"></i> Số điện thoại: {{ $setting->tel }}
+                    <i class="fa fa-phone" aria-hidden="true"></i> Số điện thoại: +01 23.456.789
                     <br>
-                    <i class="fa fa-envelope" aria-hidden="true"></i> Email: {{ $setting->email }}
+                    <i class="fa fa-envelope" aria-hidden="true"></i> Email: lient@xetot.com
                 </p>
             </div>
         </div>

@@ -1,7 +1,7 @@
 @extends('client.layouts.template')
 
 @section('main')
-<h3 class="text-center mb-4">Hãng sản phẩm</h3>
+<h3 class="text-center mb-4">Hãng xe</h3>
 @include('client.includes.brand')
 <!-- Featured Section Begin -->
 <section class="featured spad">
@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Sản phẩm</h2>
+                    <h2>Các dòng xe</h2>
                 </div>
                 <div class="featured__controls">
                     <ul>
@@ -23,7 +23,7 @@
         </div>
         <div class="row featured__filter">
             @foreach ($products as $product)
-                <div class="col-lg-3 col-md-4 col-sm-6 mix {{ str_replace(' ', '', $product->cate_title) }}">
+                <div class="col-lg-3 col-md-4 col-sm-6 mix {{ str_replace(' ', '', $product->brand_title) }}">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="{{ asset($product->image) }}">
                             <ul class="featured__item__pic__hover">
@@ -48,12 +48,12 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="banner__pic">
-                    <img src="{{ asset('client/img/banner/banner-1.jpg') }}" alt="">
+                    <img src="{{ asset('client/img/banner/banner-1.jpg') }}" height="350" alt="">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="banner__pic">
-                    <img src="{{ asset('client/img/banner/banner-2.jpg') }}" alt="">
+                    <img src="{{ asset('client/img/banner/banner-2.jpg') }}" height="350" alt="">
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="latest-product__text">
-                    <h4>Sản phẩm mới nhất</h4>
+                    <h4>Dòng xe mới nhất</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-product__slider__item">
                             @foreach ($product_slide_1 as $product)
@@ -100,7 +100,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="latest-product__text">
-                    <h4>Sản phẩm bán chạy nhất</h4>
+                    <h4>Dòng xe bán chạy nhất</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             @foreach ($product_top_sale_1 as $product)

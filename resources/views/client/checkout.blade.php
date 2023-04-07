@@ -84,7 +84,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
                             <h4>Chi tiết đơn hàng</h4>
-                            <div class="checkout__order__products">Sản phẩm <span>Tổng tiền</span></div>
+                            <div class="checkout__order__products">Dòng xe <span>Tổng tiền</span></div>
                             <ul>
                                 @php
                                     use App\Models\Cart;

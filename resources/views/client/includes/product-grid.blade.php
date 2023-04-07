@@ -17,6 +17,6 @@
     {!! $products->links() !!}
 @else
     <div class="col-lg-4 col-md-6 col-sm-6">
-        Không có sản phẩm nào
+        Không có dòng xe nào
     </div>
 @endif

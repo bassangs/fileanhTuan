@@ -45,8 +45,7 @@
                       @endif
                     @endif
                     <ul>
-                        <li><b>Danh mục</b> <span>{{ $product->cate_title }}</span></li>
-                        <li><b>Nhà cung cấp</b> <span>{{ $product->supplier_title }}</span></li>
+                        <li><b>Hãng xe</b> <span>{{ $product->brand_title }}</span></li>
                         <li><b>Trạng thái</b> <span>{{ $product->qty > 0 ? 'Còn hàng' : 'Hết hàng' }}</span></li>
                     </ul>
                 </div>
@@ -55,7 +54,7 @@
                 <div class="product__details__tab">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active">Mô tả sản phẩm</a>
+                            <a class="nav-link active">Mô tả xe</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -78,7 +77,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title related__product__title">
-                    <h2>Sản phẩm liên quan</h2>
+                    <h2>Dòng xe liên quan</h2>
                 </div>
             </div>
         </div>

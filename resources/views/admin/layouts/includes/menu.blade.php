@@ -10,7 +10,7 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-    Sản phẩm
+    Dòng xe
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
@@ -18,7 +18,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
         aria-controls="collapseOne">
         <i class="fas fa-fw fa-table"></i>
-        <span>Hãng sản phẩm</span>
+        <span>Hãng xe</span>
     </a>
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
@@ -48,7 +48,7 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
         aria-controls="collapseThree">
         <i class="fas fa-fw fa-table"></i>
-        <span>Sản phẩm</span>
+        <span>Dòng xe</span>
     </a>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">

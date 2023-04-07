@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="text-center text-150">
-                            <span class="text-default-d3">Xe tốt</span>
+                            <span class="text-default-d3">Xe Tốt</span>
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="mt-4">
                     <div class="row text-600 text-white bgc-default-tp1 py-25">
                         <div class="d-none d-sm-block col-1">#</div>
-                        <div class="col-9 col-sm-5">Sản phẩm</div>
+                        <div class="col-9 col-sm-5">Xe</div>
                         <div class="d-none d-sm-block col-4 col-sm-2">Số lượng</div>
                         <div class="d-none d-sm-block col-sm-2">Đơn giá</div>
                         <div class="col-2">Tổng</div>

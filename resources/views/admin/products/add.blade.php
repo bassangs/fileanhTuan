@@ -1,9 +1,9 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Thêm sản phẩm')
+@section('title', 'Thêm xe')
 
 @section('content')
-<h1 class="h3 mb-2 text-gray-800">Thêm sản phẩm</h1>
+<h1 class="h3 mb-2 text-gray-800">Thêm xe</h1>
 
 <div class="row">
     <div class="col-lg-12">
@@ -12,7 +12,7 @@
             @csrf
 
             <div class="form-group">
-                <label for="brand_id">Hãng sản phẩm: <span class="text-danger">*</span></label>
+                <label for="brand_id">Hãng xe: <span class="text-danger">*</span></label>
                 <select class="form-control" name="brand_id" id="brand_id">
                     @foreach ($brands as $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
@@ -20,8 +20,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="name">Tên sản phẩm: <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" id="name" name="name" required>
+                <label for="name">Tên xe: <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Nhập tên xe" id="name" name="name" required>
             </div>
             <div class="form-group">
                 <label for="price">Giá tiền: <span class="text-danger">*</span></label>
@@ -32,7 +32,7 @@
                 <input type="number" class="form-control" placeholder="Nhập số lượng" id="qty" name="qty" min=1 required>
             </div>
             <div class="form-group">
-                <label for="description">Mô tả sản phẩm:</label>
+                <label for="description">Mô tả xe:</label>
                 <textarea class="form-control" id="description" name="description"></textarea>
             </div>
             <div class="form-group">

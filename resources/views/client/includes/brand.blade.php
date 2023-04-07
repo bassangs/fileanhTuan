@@ -5,9 +5,9 @@
             <div class="categories__slider owl-carousel">
                 @foreach ($brands as $brand)
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{ asset($brand->image) }}">
-                            <h5><a href="{{ route('client.product.brand',['brand' => $brand->id]) }}">{{ $brand->name }}</a></h5>
-                        </div>
+                        <a href="{{ route('client.product.brand',['brand' => $brand->id]) }}">
+                            <div class="categories__item set-bg" data-setbg="{{ asset($brand->image) }}" style="background-position: center;background-size: contain;"></div>
+                        </a>
                     </div>  
                 @endforeach
             </div>

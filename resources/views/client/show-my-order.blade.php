@@ -25,7 +25,7 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Sản phẩm</th>
+                            <th>Dòng xe</th>
                             <th>Số lượng</th>
                             <th>Đơn giá</th>
                         </tr>

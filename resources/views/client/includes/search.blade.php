@@ -6,7 +6,7 @@
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>Danh mục</span>
+                        <span>Hãng</span>
                     </div>
                     <ul>
                         @foreach ($brands as $brand)
@@ -19,7 +19,7 @@
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form action="{{ route('client.search.product') }}" method="GET">
-                            <input type="text" placeholder="Tìm kiếm sản phẩm ..." name="q">
+                            <input type="text" placeholder="Tìm kiếm dòng xe ..." name="q">
                             <button type="submit" class="site-btn">TÌM KIẾM</button>
                         </form>
                     </div>

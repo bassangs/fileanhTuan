@@ -29,7 +29,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th class="shoping__product">Sản phẩm</th>
+                                <th class="shoping__product">Dòng xe</th>
                                 <th width="200">Đơn giá</th>
                                 <th>Số lượng</th>
                                 <th width="350">Tổng tiền</th>
@@ -71,7 +71,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="5" align="center">Chưa có sản phẩm</td>
+                                    <td colspan="5" align="center">Chưa có dòng xe</td>
                                 </tr>
                             @endif
                         </tbody>

@@ -1,9 +1,9 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Danh sách sản phẩm')
+@section('title', 'Danh sách dòng xe')
 
 @section('content')
-<h1 class="h3 mb-2 text-gray-800">Sản phẩm</h1>
+<h1 class="h3 mb-2 text-gray-800">Dòng xe</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -13,9 +13,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Ảnh sản phẩm</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Hãng sản phẩm</th>
+                        <th>Ảnh xe</th>
+                        <th>Tên xe</th>
+                        <th>Hãng xe</th>
                         <th>Số lượng</th>
                         <th>Giá tiền</th>
                         <th width="90">Chức năng</th>
@@ -34,7 +34,7 @@
                             <td>{{ $product->qty }}</td>
                             <td>{{ number_format($product->price,-3,',',',') }} VND</td>
                             <td>
-                                <a href="{{ route('product.delete',['id' => $product->id]) }}" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Bạn muốn xóa sản phẩm này ?')">
+                                <a href="{{ route('product.delete',['id' => $product->id]) }}" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Bạn muốn xóa xe này ?')">
                                     <i class="fas fa-trash"></i>
                                 </a>
                                 <a href="{{ route('product.edit.form',['id' => $product->id]) }}" class="btn btn-primary btn-circle btn-sm">
