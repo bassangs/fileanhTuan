@@ -1,5 +1,7 @@
 @extends('client.layouts.template')
 
+@section('title', 'Đăng nhập')
+
 @section('css')
 <style>
 .btn-google {

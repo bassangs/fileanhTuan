@@ -1,5 +1,7 @@
 @extends('client.layouts.template')
 
+@section('title', 'Đăng ký')
+
 @section('main')
 <!-- Contact Form Begin -->
 <div class="contact-form spad">

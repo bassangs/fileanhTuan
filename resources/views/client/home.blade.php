@@ -1,5 +1,7 @@
 @extends('client.layouts.template')
 
+@section('title', 'Trang chủ')
+
 @section('main')
 @include('client.includes.search')
 <h3 class="text-center mb-4">Hãng xe</h3>
