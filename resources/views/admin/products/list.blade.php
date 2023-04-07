@@ -18,7 +18,7 @@
                         <th>Hãng sản phẩm</th>
                         <th>Số lượng</th>
                         <th>Giá tiền</th>
-                        <th>Chức năng</th>
+                        <th width="90">Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +26,9 @@
                     @foreach ($products as $product)
                         <tr>
                             <td>{{ $count }}</td>
-                            <td><img src="{{ asset($product->image) }}" width=60px ></td>
+                            <td>
+                                <a href="{{ asset($product->image) }}" target="_blank"><img src="{{ asset($product->image) }}" width=60></a>
+                            </td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->brand_title }}</td>
                             <td>{{ $product->qty }}</td>

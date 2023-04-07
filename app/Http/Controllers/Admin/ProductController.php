@@ -123,4 +123,10 @@ class ProductController extends Controller
 
         return redirect()->route('product.list');
     }
+
+    public function show($id)
+    {
+        $product = Product::find($id); 
+        return view('admin.products.show', compact('product'));
+    }
 }

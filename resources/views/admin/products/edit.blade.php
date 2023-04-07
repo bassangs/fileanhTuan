@@ -37,9 +37,9 @@
             </div>
             <div class="form-group">
                 <label for="color">Màu sắc: <span class="text-danger">*</span></label>
-                <select class="form-control" name="colors" id="color" size="4" multiple>
+                <select class="form-control" name="colors[]" id="color" size="4" multiple>
                     @foreach ($colors as $color)
-                        <option value="{{ $color->id }}" {{ in_array($color->id, explode(',', $product->colors) ? 'selected' : '') }}>{{ $color->name }}</option>
+                        <option value="{{ $color->id }}" {{ in_array($color->id, explode(',', $product->colors)) ? 'selected' : '' }}>{{ $color->name }}</option>
                     @endforeach
                 </select>
             </div>

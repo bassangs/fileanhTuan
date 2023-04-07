@@ -12,7 +12,7 @@
             <table class="table table-bordered" width="100%" cellspacing="0">
                 <tr>
                     <th>Ảnh sản phẩm</th>
-                    <td><img src="{{ asset($product->image) }}" width="100"></td>
+                    <td><img src="{{ asset($product->image) }}" width="200"></td>
                 </tr>
                 <tr>
                     <th>Mô tả sản phẩm</th>
@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <th>Hãng sản phẩm</th>
-                    <td>{{ \App\Models\Brand::find($product->brand_id)->ten_hang }}</td>
+                    <td>{{ \App\Models\Brand::find($product->brand_id)->name }}</td>
                 </tr>
                 <tr>
                     <th>Giá tiền</th>
@@ -32,7 +32,16 @@
                 </tr>
                 <tr>
                     <th>Màu sắc</th>
-                    <td>{{ implode(', ', $product->colors) }}</td>
+                    <td>
+                        @php
+                            $colors = [];
+                            foreach (explode(',', $product->colors) as $item) {
+                                $colors[] = \App\Models\Color::find($item)->name;
+                            }
+
+                            echo implode(', ', $colors);
+                        @endphp
+                    </td>
                 </tr>
             </table>
         </div>
