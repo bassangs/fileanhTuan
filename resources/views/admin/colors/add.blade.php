@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label for="hex">Mã màu: <span class="text-danger">*</span></label>
-                <input type="color" class="form-control" placeholder="Nhập mã màu" id="hex" name="hex" required>
+                <input type="color" class="form-control" placeholder="Nhập mã màu" id="hex" name="hex" style="width: 10%;" required>
             </div>
             <button type="submit" class="btn btn-primary">Thêm</button>
           </form>
