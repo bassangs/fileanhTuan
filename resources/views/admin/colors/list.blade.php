@@ -25,7 +25,7 @@
                         <tr>
                             <td>{{ $count }}</td>
                             <td>
-                                <div style="background-color: {{ $color->hex }};width: 50px;height:50px;border-radius: 100%;"></div>
+                                <div style="background-color: {{ $color->hex }};width: 50px;height:50px;border-radius: 100%;border: 1px solid black;"></div>
                             </td>
                             <td>{{ $color->name }}</td>
                             <td>{{ $color->hex }}</td>
