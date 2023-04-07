@@ -1,6 +1,7 @@
 @extends('client.layouts.template')
 
 @section('main')
+@include('client.includes.search')
 <h3 class="text-center mb-4">Hãng xe</h3>
 @include('client.includes.brand')
 <!-- Featured Section Begin -->

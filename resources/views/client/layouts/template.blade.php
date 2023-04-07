@@ -140,8 +140,7 @@
         </div>
     </header>
     <!-- Header Section End -->
-
-    @include('client.includes.search')
+    
     @yield('main')
 
     <!-- Footer Section Begin -->
