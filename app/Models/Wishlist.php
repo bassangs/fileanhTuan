@@ -10,5 +10,5 @@ class Wishlist extends Model
     use HasFactory;
 
     protected $fillable = ['product_id','user_id'];
-    protected $table = "wishlist";
+    protected $table = "wishlists";
 }

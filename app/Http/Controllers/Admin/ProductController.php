@@ -53,7 +53,7 @@ class ProductController extends Controller
                    'price' => $request->price,
                    'brand_id' => $request->brand_id,
                    'image' => '/storage/images/products/' . $request->image->getClientOriginalName(),
-                   'description' => $request->content,
+                   'description' => $request->description,
                    'qty' => $request->qty,
                    'colors' => implode(', ', $request->colors),
                 ]);
@@ -100,7 +100,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->brand_id = $request->brand_id;
-        $product->description = $request->content;
+        $product->description = $request->description;
         $product->qty = $request->qty;
         $product->colors = implode(', ', $request->colors);
         $product->save();

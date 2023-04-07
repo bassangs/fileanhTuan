@@ -17,6 +17,7 @@
                         <th>Tên xe</th>
                         <th>Hãng xe</th>
                         <th>Số lượng</th>
+                        <th>Số lượng bán</th>
                         <th>Giá tiền</th>
                         <th width="90">Chức năng</th>
                     </tr>
@@ -32,6 +33,7 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->brand_title }}</td>
                             <td>{{ $product->qty }}</td>
+                            <td>{{ $product->qty_buy }}</td>
                             <td>{{ number_format($product->price,-3,',',',') }} VND</td>
                             <td>
                                 <a href="{{ route('product.delete',['id' => $product->id]) }}" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Bạn muốn xóa xe này ?')">
