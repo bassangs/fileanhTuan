@@ -78,7 +78,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> </li>
+                                <li><i class="fa fa-envelope"></i> lienhe@xetot.com</li>
                                 <li>Miễn phí ship với hóa đơn từ 500.000 VND</li>
                             </ul>
                         </div>
@@ -157,7 +157,7 @@
                         <ul>
                             <li>Địa chỉ: Hà Nội</li>
                             <li>Số điện thoại: +01 23.456.789</li>
-                            <li>Email: lient@xetot.com</li>
+                            <li>Email: lienhe@xetot.com</li>
                         </ul>
                     </div>
                 </div>
