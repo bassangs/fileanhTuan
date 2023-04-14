@@ -368,7 +368,7 @@ ol {
 	text-align: left;
 	padding: 5px 0;
 	position: absolute;
-	left: 0;
+	left: 50px;
 	top: 43px;
 	z-index: 9;
 	opacity: 0;
@@ -1418,8 +1418,6 @@ ol {
 }
 
 .filter__item {
-	padding-top: 45px;
-	border-top: 1px solid #ebebeb;
 	padding-bottom: 20px;
 }
 
@@ -1766,7 +1764,6 @@ ol {
 }
 
 .pro-qty {
-	width: 140px;
 	height: 50px;
 	display: inline-block;
 	position: relative;
@@ -1952,7 +1949,6 @@ ol {
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty {
-	width: 120px;
 	height: 40px;
 }
 

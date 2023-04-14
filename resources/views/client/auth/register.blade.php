@@ -33,35 +33,35 @@
 
             <div class="row justify-content-md-center">
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Họ tên" style="margin-bottom: 10px;" name="name" value="{{ old('name') }}">
+                    <input type="text" placeholder="Họ tên" style="margin-bottom: 10px;" name="name" required>
                 </div>
             </div>
             <div class="row justify-content-md-center">
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Email" style="margin-bottom: 10px;" name="email" value="{{ old('email') }}">
+                    <input type="text" placeholder="Email" style="margin-bottom: 10px;" name="email" required>
                 </div>
             </div>
             <div class="row justify-content-md-center">
                 <div class="col-lg-6 col-md-6">
-                    <input type="password" placeholder="Mật khẩu" style="margin-bottom: 10px;" name="password">
+                    <input type="password" placeholder="Mật khẩu" style="margin-bottom: 10px;" name="password" required>
                 </div>
             </div>
             <div class="row justify-content-md-center">
                 <div class="col-lg-6 col-md-6">
-                    <input type="password" placeholder="Xác nhận mật khẩu" style="margin-bottom: 10px;" name="repassword">
+                    <input type="password" placeholder="Xác nhận mật khẩu" style="margin-bottom: 10px;" name="repassword" required>
                 </div>
             </div>
             <div class="row justify-content-md-center">
                 <div class="col-lg-6 col-md-6" style="margin-bottom: 10px;">
-                    <select name="sex">
-                        <option value="0" {{ old('sex') == 0 ? 'selected' : '' }}>Nam</option>
-                        <option value="1" {{ old('sex') == 1 ? 'selected' : '' }}>Nữ</option>
+                    <select class="form-control" name="sex" style="width: 100px;" required>
+                        <option value="0">Nam</option>
+                        <option value="1">Nữ</option>
                     </select>
                 </div>
             </div>
             <div class="row justify-content-md-center">
                 <div class="col-lg-6 col-md-6">
-                    <input type="tel" placeholder="Số điện thoại" style="margin-bottom: 10px;" value="{{ old('phone') }}" name="phone" pattern="[0-9]{10}">
+                    <input type="tel" placeholder="Số điện thoại" style="margin-bottom: 10px;" name="phone" pattern="[0-9]{10}" required>
                 </div>
             </div>
             <div class="row">

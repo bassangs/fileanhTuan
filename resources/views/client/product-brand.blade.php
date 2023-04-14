@@ -1,5 +1,9 @@
 @extends('client.layouts.template')
 
+@section('title')
+    Hãng {{ \App\Models\Brand::find($brand)->name }}
+@endsection
+
 @section('main')
 
 <!-- Breadcrumb Section Begin -->
@@ -40,7 +44,7 @@
                         @endforeach
                         {!! $products->links() !!}
                     @else
-                        Hiện hãng này chưa có xe nào
+                        Hiện hãng này chưa có dòng xe nào
                     @endif
                 </div>
             </div>

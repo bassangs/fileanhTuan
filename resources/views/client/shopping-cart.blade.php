@@ -1,5 +1,15 @@
 @extends('client.layouts.template')
 
+@section('title', 'Giỏ hàng')
+
+@section('css')
+    <style>
+        .primary-btn:hover {
+            color: white;
+        }
+    </style>
+@stop
+
 @section('main')
 
 <!-- Breadcrumb Section Begin -->
@@ -55,9 +65,7 @@
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
                                                 <div class="pro-qty">
-                                                    <a href="{{ route('decrease.item', ['id' => $row['item']['id']]) }}"><span class="dec qtybtn">-</span></a>
-                                                    <input type="text" value="{{ $row['qty'] }}" readonly>
-                                                    <a href="{{ route('increase.item', ['id' => $row['item']['id']]) }}"><span class="inc qtybtn">+</span></a>
+                                                    <input type="text" value="{{ $row['qty'] }}">
                                                 </div>
                                             </div>
                                         </td>

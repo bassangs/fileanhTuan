@@ -199,4 +199,9 @@
         }
     });
 
+    $('#product_grid').on('click', '#seeMore', function () {
+        $('#product_grid').children().removeClass('d-none');
+        $(this).hide();
+    });
+
 })(jQuery);

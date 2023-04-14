@@ -1,7 +1,15 @@
 @extends('client.layouts.template')
 
+@section('title')
+    {{ $product->name }}
+@endsection
+
 @section('css')
-    <link rel="stylesheet" href="{{ asset('client/css/comment.css') }}">
+    <style>
+        .primary-btn:hover {
+            color: white;
+        }
+    </style>
 @stop
 
 @section('main')
@@ -45,7 +53,7 @@
                       @endif
                     @endif
                     <ul>
-                        <li><b>Hãng xe</b> <span>{{ $product->brand_title }}</span></li>
+                        <li><b>Hãng xe</b> <span>{{ \App\Models\Brand::find($product->brand_id)->name }}</span></li>
                         <li><b>Trạng thái</b> <span>{{ $product->qty > 0 ? 'Còn hàng' : 'Hết hàng' }}</span></li>
                     </ul>
                 </div>

@@ -34,7 +34,7 @@
                     <br>
                     <i class="fa fa-phone" aria-hidden="true"></i> Số điện thoại: +01 23.456.789
                     <br>
-                    <i class="fa fa-envelope" aria-hidden="true"></i> Email: lient@xetot.com
+                    <i class="fa fa-envelope" aria-hidden="true"></i> Email: lienhe@xetot.com
                 </p>
             </div>
         </div>

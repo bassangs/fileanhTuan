@@ -1,5 +1,7 @@
 @extends('client.layouts.template')
 
+@section('title', 'Đơn hàng của tôi')
+
 @section('main')
 
 <!-- Breadcrumb Section Begin -->
@@ -8,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Hóa đơn của tôi</h2>
+                    <h2>Đơn hàng của tôi</h2>
                 </div>
             </div>
         </div>

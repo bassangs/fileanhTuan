@@ -1,5 +1,7 @@
 @extends('client.layouts.template')
 
+@section('title', 'Đặt hàng')
+
 @section('main')
 
 <!-- Breadcrumb Section Begin -->

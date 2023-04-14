@@ -1,5 +1,7 @@
 @extends('client.layouts.template')
 
+@section('title', 'Cảm ơn')
+
 @section('main')
     <div class="jumbotron text-center">
         <h2 class="display-3">Cảm ơn quý khách đã mua hàng của chúng tôi!</h2>

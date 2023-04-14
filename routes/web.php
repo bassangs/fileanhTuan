@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Auth;
 // Client
 Route::namespace('Client')->prefix('/')->group(function () {
     Route::namespace('Auth')->prefix('auth')->group(function () {
-
         Route::get('/login', 'AuthController@showLogin')->name('auth.show.login');
         Route::post('/login', 'AuthController@login')->name('auth.post.login');
         Route::get('/register', 'AuthController@showRegister')->name('auth.show.register');
         Route::post('/register', 'AuthController@register')->name('auth.post.register');
         Route::get('/logout', 'AuthController@logout')->name('auth.logout');
+        Route::get('/change-account', 'AuthController@changeAccount')->name('auth.change.account');
+        Route::post('/change-account', 'AuthController@postChangeAccount')->name('auth.post.change.account');
     });
 
     Route::get('', 'HomeController@index')->name('client.home');
@@ -32,8 +33,6 @@ Route::namespace('Client')->prefix('/')->group(function () {
     Route::get('product-brand/{brand}','ProductController@brand')->name('client.product.brand');
     Route::get('add-to-cart', 'ProductController@addToCart');
     Route::get('delete-item/{id}', 'ProductController@deleteItem')->name('delete.item');
-    Route::get('increase-item/{id}', 'ProductController@increaseItem')->name('increase.item');
-    Route::get('decrease-item/{id}', 'ProductController@decreaseItem')->name('decrease.item');
     Route::get('shopping-cart', 'OrderController@shopping_cart')->name('client.shopping.cart');
     Route::get('checkout', 'OrderController@checkout')->name('client.checkout');
     Route::post('pay','OrderController@pay')->name('pay');

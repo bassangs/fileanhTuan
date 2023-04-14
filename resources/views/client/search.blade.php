@@ -1,5 +1,9 @@
 @extends('client.layouts.template')
 
+@section('title')
+    Tìm từ khóa với {{ $q }}
+@endsection
+
 @section('main')
 
 <!-- Breadcrumb Section Begin -->

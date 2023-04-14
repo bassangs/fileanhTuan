@@ -1,5 +1,7 @@
 @extends('client.layouts.template')
 
+@section('title', 'Danh sách sản phẩm')
+
 @section('main')
 
 <!-- Breadcrumb Section Begin -->
@@ -32,39 +34,6 @@
                                 onMouseOut="this.style.color='black'" onclick="filterProductByCate({{ $brand->id }}, event);" class="mb-3 brand_item">{{ $brand->name }}</li>
                             @endforeach
                         </ul>
-                    </div>
-                    <div class="sidebar__item">
-                        <div class="latest-product__text">
-                            <h4>Dòng xe mới</h4>
-                            <div class="latest-product__slider owl-carousel">
-                                <div class="latest-prdouct__slider__item">
-                                    @foreach ($product_slide_1 as $product)
-                                        <a href="{{ route('client.product.detail', ['id' => $product->id]) }}" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{  asset($product->image) }}" alt="{{ $product->name }}">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>{{ $product->name }}</h6>
-                                                <span>{{ number_format($product->price,-3,',',',') }} VND</span>
-                                            </div>
-                                        </a>
-                                    @endforeach
-                                </div>
-                                <div class="latest-prdouct__slider__item">
-                                    @foreach ($product_slide_2 as $product)
-                                        <a href="{{ route('client.product.detail', ['id' => $product->id]) }}" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{  asset($product->image) }}" alt="{{ $product->name }}">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>{{ $product->name }}</h6>
-                                                <span>{{ number_format($product->price,-3,',',',') }} VND</span>
-                                            </div>
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

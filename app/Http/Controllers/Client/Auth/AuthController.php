@@ -38,9 +38,13 @@ class AuthController extends Controller
                 'sex' => $request->sex,
                 'phone' => $request->phone,
             ]);
-            return redirect()->route('auth.show.login')->with('success', 'Đăng ký thành công');
+            toastr()->success('Đăng ký thành công');
+
+            return redirect()->route('auth.show.login');
         }else {
-            return redirect()->back()->with('invalid', 'Mật khẩu không trùng khớp');
+            toastr()->error('Mật khẩu không trùng khớp');
+
+            return redirect()->back();
         }
     }
 
@@ -52,15 +56,15 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        try {
-            $result = Auth::attempt(['email' => $request->email, 'password' => $request->password], true);
-            if ($result) {
-                return redirect()->route('client.home');
-            } else {
-                return redirect()->back()->withInput()->with('invalid', 'Email/Mật khẩu không đúng');
-            }
-        } catch (\Throwable $e) {
-            \Log::info($e->getMessage());
+        $result = Auth::attempt(['email' => $request->email, 'password' => $request->password], true);
+        if ($result) {
+            toastr()->success('Đăng nhập thành công');
+
+            return redirect()->route('client.home');
+        } else {
+            toastr()->error('Email / Mật khẩu không đúng');
+
+            return redirect()->back()->withInput();
         }
     }
 
@@ -72,65 +76,26 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('auth.show.login')->with('success', 'Đăng xuất thành công');
+        toastr()->success('Đăng xuất thành công');
+
+        return redirect()->route('auth.show.login');
     }
 
-    public function resetPass()
+    public function changeAccount()
     {
-        return view('client.auth.reset_password');
+        $user = User::find(Auth::user()->id);
+        return view('client.auth.change_account', compact('user'));
     }
 
-    /**
-     * Send mail link
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function sendLink(Request $request)
+    public function postChangeAccount(Request $request)
     {
-        $check = User::where('email',$request->input('email'))->exists();
-        if ($check) {
-            $token = Str::random(30);
-            PasswordReset::create([
-                'email'    => $request->input('email'),
-                'token'    => $token
-            ]);
-            Mail::to($request->input('email'))->send(new SendLink($token));
-            return redirect()->back()->with('success','Gửi link thành công, vui lòng kiểm tra hộp thư của bạn.');
-        } else {
-            return redirect()->back()->with('invalid','Mail không tồn tại trong hệ thống.');
-        }
-    }
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->sex = $request->sex;
+        $user->phone = $request->phone;
+        $user->save();
+        toastr()->success('Cập nhật thành công');
 
-    /**
-     * Show password change form
-     * 
-     * @param string $token
-     * @return \Illuminate\Http\Response
-     */
-    public function showChangePassword($token)
-    {
-        $user = PasswordReset::where('token', '=', $token)->first();
-        return view('client.auth.change_password',['email' => $user['email']]);
-    }
-
-    /**
-     * Update password
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function updatePassword(Request $request)
-    {
-        
-        if($request->input('password') === $request->input('repassword')){
-            User::where('email',$request->input('email'))->update(['password' => bcrypt($request->input('password'))]);
-            if(Auth::check()){
-                Auth::logout();
-            }
-            return redirect()->route('auth.show.login')->with('success','Đổi mật khẩu thành công.');
-        }else{
-            return redirect()->back()->with('invalid','Mật khẩu không trùng khớp.');
-        }
+        return redirect()->back();
     }
 }

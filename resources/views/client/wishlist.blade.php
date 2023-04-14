@@ -1,5 +1,7 @@
 @extends('client.layouts.template')
 
+@section('title', 'Danh sách yêu thích')
+
 @section('main')
 
 <!-- Breadcrumb Section Begin -->
@@ -26,10 +28,10 @@
                         @foreach ($products as $product)
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="{{  asset($product->image_path) }}">
+                                    <div class="product__item__pic set-bg" data-setbg="{{ asset($product->image) }}">
                                         <ul class="product__item__pic__hover">
                                             <li><a href="javascript:void(0)" onclick="addToCart({{ $product->id }});"><i class="fa fa-shopping-cart"></i></a></li>
-                                            <li><a href="{{ route('client.delete.wishlist',['id' => $product->id]) }}"><i class="fas fa-trash"></i></a></li>
+                                            <li><a href="{{ route('client.delete.wishlist',['id' => $product->id]) }}" onclick="return confirm('Bạn có muốn xóa sản phẩm này ra khỏi danh sách ?')"><i class="fas fa-trash"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="product__item__text">
