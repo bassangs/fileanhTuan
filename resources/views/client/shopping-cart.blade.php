@@ -65,11 +65,11 @@
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
                                                 <div class="pro-qty">
-                                                    <input type="text" value="{{ $row['qty'] }}">
+                                                    <input type="text" value="{{ $row['qty'] }}" onkeyup="changeQty(this.value, {{ $row['item']['id'] }})">
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="shoping__cart__total">
+                                        <td class="shoping__cart__total" id="cart-item-total-{{ $row['item']['id'] }}">
                                             {{ number_format($row['price'],-3,',',',') }} VND
                                         </td>
                                         <td class="shoping__cart__item__close">
@@ -100,7 +100,7 @@
                     <div class="shoping__checkout">
                         <h5>Giỏ hàng</h5>
                         <ul>
-                            <li>Tổng tiền <span>{{ number_format(Session::get('cart')->totalPrice,-3,',',',') }} VND</span></li>
+                            <li id="cart-total">Tổng tiền <span>{{ number_format(Session::get('cart')->totalPrice,-3,',',',') }} VND</span></li>
                         </ul>
                         @if (Auth::check())
                             <a href="{{ route('client.checkout') }}" class="primary-btn">THANH TOÁN</a>

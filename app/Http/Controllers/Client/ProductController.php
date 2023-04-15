@@ -125,4 +125,19 @@ class ProductController extends Controller
         Wishlist::where('product_id',$id)->where('user_id',Auth::user()->id)->delete();
         return redirect()->back();
     }
+
+    public function changeQty(Request $request)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->changeQty($request);
+        Session::put('cart', $cart);
+        return response()->json([
+            'status' => 200,
+            'price'  => number_format($cart->items[$request->id]['price'],-3,',',',') . ' VND',
+            'totalQty' => $cart->totalQty,
+            'totalPrice' => number_format($cart->totalPrice,-3,',',',') . ' VND',
+            'productId' => $request->id
+        ]);
+    }
 }

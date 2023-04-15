@@ -237,7 +237,7 @@
     <script src="{{ asset('client/js/add-to-cart.js') }}"></script>
     <script src="{{ asset('client/js/filter.js') }}"></script>
     <script src="{{ asset('client/js/sort.js') }}"></script>
-    <script src="{{ asset('client/js/voucher.js') }}"></script>
+    <script src="{{ asset('client/js/cart.js') }}"></script>
 </body>
 
 </html>

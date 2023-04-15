@@ -29,7 +29,6 @@
                             <th>Mã đơn hàng</th>
                             <th>Khách hàng</th>
                             <th>Tổng tiền</th>
-                            <th>Mã khuyến mãi</th>
                             <th>Ngày đặt hàng</th>
                             <th>Trạng thái</th>
                             <th>Chức năng</th>
@@ -40,8 +39,7 @@
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ \App\Models\User::find($row->user_id)->name }}</td>
-                                <td>{{ !is_null($row->voucher_code) ? number_format($row->total - \App\Models\Voucher::where('code', $row->voucher_code)->first()->price,-3,',',',') : number_format($row->total,-3,',',',') }} VND</td>
-                                <td>{{ !is_null($row->voucher_code) ? $row->voucher_code : 'Không có' }}</td>
+                                <td>{{ number_format($row->total,-3,',',',') }} VND</td>
                                 <td>{{ date('d/m/Y H:i:s',strtotime($row->created_at)) }}</td>
                                 <td>
                                     @if ($row->status === 0)

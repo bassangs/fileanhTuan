@@ -36,6 +36,8 @@ Route::namespace('Client')->prefix('/')->group(function () {
     Route::get('shopping-cart', 'OrderController@shopping_cart')->name('client.shopping.cart');
     Route::get('checkout', 'OrderController@checkout')->name('client.checkout');
     Route::post('pay','OrderController@pay')->name('pay');
+    Route::get('cancel-payment-paypal', 'OrderController@cancelPaymentPaypal')->name('cancel.payment.paypal');
+    Route::get('done-payment-paypal', 'OrderController@donePaymentPaypal')->name('done.payment.paypal');
     Route::get('thank','OrderController@thank')->name('thank');
     Route::get('filter', 'ProductController@filter');
     Route::get('sort', 'ProductController@sort');
@@ -44,7 +46,7 @@ Route::namespace('Client')->prefix('/')->group(function () {
     Route::get('wishlist','ProductController@wishlist')->name('client.wishlist');
     Route::get('add-wishlist/{id}','ProductController@addWishlist')->name('client.add.wishlist');
     Route::get('delete-wishlist/{id}','ProductController@deleteWishlist')->name('client.delete.wishlist');
-    Route::get('check-voucher', 'OrderController@checkVoucher');
+    Route::get('change-qty', 'ProductController@changeQty');
 });
 
 // Admin
