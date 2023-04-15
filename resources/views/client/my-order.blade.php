@@ -35,28 +35,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($orders as $row)
+                        @if ($orders->count() > 0)
+                            @foreach ($orders as $row)
+                                <tr>
+                                    <td>{{ $row->id }}</td>
+                                    <td>{{ \App\Models\User::find($row->user_id)->name }}</td>
+                                    <td>{{ number_format($row->total,-3,',',',') }} VND</td>
+                                    <td>{{ date('d/m/Y H:i:s',strtotime($row->created_at)) }}</td>
+                                    <td>
+                                        @if ($row->status === 0)
+                                            {{ 'Chờ xác nhận' }}
+                                        @elseif ($row->status === 1)
+                                            {{ 'Xác nhận' }}
+                                        @elseif ($row->status === 2)
+                                            {{ 'Hoàn thành' }}
+                                        @elseif ($row->status === 3)
+                                            {{ 'Hủy' }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('my.order.show', ['id' => $row->id]) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr>
-                                <td>{{ $row->id }}</td>
-                                <td>{{ \App\Models\User::find($row->user_id)->name }}</td>
-                                <td>{{ number_format($row->total,-3,',',',') }} VND</td>
-                                <td>{{ date('d/m/Y H:i:s',strtotime($row->created_at)) }}</td>
-                                <td>
-                                    @if ($row->status === 0)
-                                        {{ 'Chờ xác nhận' }}
-                                    @elseif ($row->status === 1)
-                                        {{ 'Xác nhận' }}
-                                    @elseif ($row->status === 2)
-                                        {{ 'Hoàn thành' }}
-                                    @elseif ($row->status === 3)
-                                        {{ 'Hủy' }}
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{ route('my.order.show', ['id' => $row->id]) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                </td>
+                                <td colspan="6" align="center">Hiện chưa có đơn hàng</td>
                             </tr>
-                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

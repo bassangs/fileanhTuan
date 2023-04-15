@@ -28,10 +28,10 @@
                         <h4>Lọc theo hãng</h4>
                         <ul>
                             <li style="cursor: pointer" onMouseOver="this.style.color='black'"
-                                onMouseOut="this.style.color='black'" onclick="filterProductByCate(0, event);" class="mb-3 brand_item">Mặc định</li>
+                                onMouseOut="this.style.color='black'" onclick="filterProductByBrand(0, event);" class="mb-3 brand_item">Mặc định</li>
                             @foreach ($brands as $brand)
                                 <li style="cursor: pointer" onMouseOver="this.style.color='black'"
-                                onMouseOut="this.style.color='black'" onclick="filterProductByCate({{ $brand->id }}, event);" class="mb-3 brand_item">{{ $brand->name }}</li>
+                                onMouseOut="this.style.color='black'" onclick="filterProductByBrand({{ $brand->id }}, event);" class="mb-3 brand_item">{{ $brand->name }}</li>
                             @endforeach
                         </ul>
                     </div>

@@ -90,6 +90,12 @@ class AuthController extends Controller
     public function postChangeAccount(Request $request)
     {
         $user = Auth::user();
+        if ($request->email !== $user->email && User::where('email', $request->email)->exists()) {
+            toastr()->error('Email đã tồn tại trong hệ thống');
+            return redirect()->back();
+        } else {
+            $user->email = $request->email;
+        }
         $user->name = $request->name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;

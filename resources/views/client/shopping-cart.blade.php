@@ -7,6 +7,10 @@
         .primary-btn:hover {
             color: white;
         }
+
+        .cart-btn:hover {
+            color: #6f6f6f;
+        }
     </style>
 @stop
 

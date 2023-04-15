@@ -25,12 +25,6 @@
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
-        @if(Session::has('invalid'))
-            <div class="alert alert-danger alert-dismissible mt-2">
-                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                {{Session::get('invalid')}}
-            </div>
-        @endif
         <div class="checkout__form">
             <h4>Đặt hàng</h4>
             <form action="{{ route('pay') }}" method="POST" id="checkout-form">
@@ -77,7 +71,7 @@
                                     $cart = new Cart($oldCart);
                                 @endphp
                                 @foreach ($cart->items as $row)
-                                    <li>{{ strlen($row['item']['name']) > 20 ? substr($row['item']['name'], 0, 20) . '...' : $row['item']['name'] }} <span>{{ number_format($row['price'],-3,',',',') }} VND</span></li>
+                                    <li>{{ $row['item']['name'] }} <span>{{ number_format($row['price'],-3,',',',') }} VND</span></li>
                                 @endforeach
                             </ul>
                             <div class="checkout__order__total">Phí đặt cọc <span class="total-cart">{{ number_format(0.1 * Session::get('cart')->totalPrice,-3,',',',') }} VND</span></div>

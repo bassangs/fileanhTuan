@@ -2,6 +2,7 @@ function changeQty(val, id)
 {
     if (val != "" && val <= 0) {
         swal({ title: 'Số lượng tối thiểu là 1', type: 'error' });
+        return;
     }
 
     if (!Number(val) || window.event.keyCode == 8) {
