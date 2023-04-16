@@ -76,8 +76,8 @@ class OrderController extends Controller
   
         $paypalModule = new ExpressCheckout;
   
-        $res = $paypalModule->setExpressCheckout($product);
-        $res = $paypalModule->setExpressCheckout($product, true);
+        $res = $paypalModule->setExpressCheckout($products);
+        $res = $paypalModule->setExpressCheckout($products, true);
   
         return redirect($res['paypal_link']);
     }
