@@ -52,7 +52,7 @@ class OrderController extends Controller
         }
 
         foreach($cart->items as $row){
-            $productDetail = Product::find($row['item']['id_sp']); 
+            $productDetail = Product::find($row['item']['id']); 
             $products['items'][] = [
                 'name' => $productDetail->name,
                 'price' => round(Currency::convert()
