@@ -34,9 +34,9 @@
                                     {{ 'Chờ xác nhận' }}
                                 @elseif ($row->status === 1)
                                     {{ 'Xác nhận' }}
-                                @elseif ($row->status === 3)
+                                @elseif ($row->status === 2)
                                     {{ 'Đang vận chuyển' }}
-                                @elseif ($row->status === 4)
+                                @elseif ($row->status === 3)
                                     {{ 'Hoàn thành' }}
                                 @else 
                                     {{ 'Hủy' }}

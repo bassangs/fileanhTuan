@@ -50,8 +50,10 @@
                                         @elseif ($row->status === 1)
                                             {{ 'Xác nhận' }}
                                         @elseif ($row->status === 2)
-                                            {{ 'Hoàn thành' }}
+                                            {{ 'Đang vận chuyển' }}
                                         @elseif ($row->status === 3)
+                                            {{ 'Hoàn thành' }}
+                                        @else 
                                             {{ 'Hủy' }}
                                         @endif
                                     </td>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use DB;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -13,6 +15,17 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.index');
+        $revenueToday =  DB::select("SELECT SUM(total) total FROM orders WHERE status = 3 
+        AND DATE_FORMAT(created_at, '%Y-%m-%d') = CURDATE()
+        GROUP BY DATE_FORMAT(created_at,'%d/%m/%Y')");
+        $revenueMonth =  DB::select("SELECT SUM(total) total FROM orders WHERE status = 3 
+        AND MONTH(created_at) = MONTH(CURRENT_DATE()) AND YEAR(created_at) = YEAR(CURRENT_DATE())
+        GROUP BY MONTH(created_at), YEAR(created_at)");
+        $revenueYear =  DB::select("SELECT SUM(total) total FROM orders WHERE status = 3 
+        AND YEAR(created_at) = YEAR(CURRENT_DATE())
+        GROUP BY YEAR(created_at)");
+        $countUser = User::count();
+
+        return view('admin.dashboard.index', compact('revenueToday', 'revenueMonth', 'revenueYear', 'countUser'));
     }
 }
