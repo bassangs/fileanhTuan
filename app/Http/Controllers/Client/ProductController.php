@@ -46,7 +46,7 @@ class ProductController extends Controller
         $product = Product::find($request->id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product,$product->id);
+        $cart->add($product,$product->id,$request->color);
         $request->session()->put('cart',$cart);
         return response()->json([
             'status' => 200,
@@ -55,11 +55,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function deleteItem($id)
+    public function deleteItem($id, $color)
     {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->deleteItem($id);
+        $cart->deleteItem($id, $color);
         if(count($cart->items) > 0){
             Session::put('cart',$cart);
         }else{
@@ -134,10 +134,10 @@ class ProductController extends Controller
         Session::put('cart', $cart);
         return response()->json([
             'status' => 200,
-            'price'  => number_format($cart->items[$request->id]['price'],-3,',',',') . ' VND',
+            'price'  => number_format($cart->items[$request->id . '_' . $request->color]['price'],-3,',',',') . ' VND',
             'totalQty' => $cart->totalQty,
             'totalPrice' => number_format($cart->totalPrice,-3,',',',') . ' VND',
-            'productId' => $request->id
+            'productId' => $request->id . '_' . $request->color
         ]);
     }
 }

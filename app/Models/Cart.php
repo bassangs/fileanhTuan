@@ -17,39 +17,40 @@ class Cart
         }
     }
 
-    public function add($item, $id){
+    public function add($item, $id, $color){
         $storedItem = ['qty' => 0, 'price' => $item->price, 'item' => $item];
         if($this->items){
-            if(array_key_exists($id, $this->items)){
-                $storedItem = $this->items[$id];
+            if(array_key_exists($id . '_' . $color, $this->items)){
+                $storedItem = $this->items[$id . '_' . $color];
             }
         }
         $storedItem['qty']++;
         $storedItem['price'] = $item->price * $storedItem['qty'];
-        $this->items[$id] = $storedItem;
+        $this->items[$id . '_' . $color] = $storedItem;
         $this->totalQty++;
         $this->totalPrice += $item->price;
     }
 
-    public function deleteItem($id){
-        $this->totalQty -= $this->items[$id]['qty'];
-        $this->totalPrice -= $this->items[$id]['price'];
-        unset($this->items[$id]);
+    public function deleteItem($id, $color){
+        $this->totalQty -= $this->items[$id . '_' . $color]['qty'];
+        $this->totalPrice -= $this->items[$id . '_' . $color]['price'];
+        unset($this->items[$id . '_' . $color]);
     }
 
     public function changeQty($request)
     {
-        if ((int) $this->items[$request->id]['qty'] < (int) $request->qty) {
-            $currentQty = (int) $request->qty - (int) $this->items[$request->id]['qty'];
+        $color = $request->color;
+        if ((int) $this->items[$request->id . '_' . $color]['qty'] < (int) $request->qty) {
+            $currentQty = (int) $request->qty - (int) $this->items[$request->id . '_' . $color]['qty'];
             $this->totalQty += $currentQty;
-            $this->totalPrice += $currentQty * $this->items[$request->id]['item']['price'];
-            $this->items[$request->id]['qty'] += (int) $currentQty;
-        } else if ((int) $this->items[$request->id]['qty'] > (int) $request->qty) {
-            $currentQty = (int) $this->items[$request->id]['qty'] - (int) $request->qty;
+            $this->totalPrice += $currentQty * $this->items[$request->id . '_' . $color]['item']['price'];
+            $this->items[$request->id . '_' . $color]['qty'] += (int) $currentQty;
+        } else if ((int) $this->items[$request->id . '_' . $color]['qty'] > (int) $request->qty) {
+            $currentQty = (int) $this->items[$request->id . '_' . $color]['qty'] - (int) $request->qty;
             $this->totalQty -= $currentQty;
-            $this->totalPrice -= $currentQty * $this->items[$request->id]['item']['price'];
-            $this->items[$request->id]['qty'] -= (int) $currentQty;
+            $this->totalPrice -= $currentQty * $this->items[$request->id . '_' . $color]['item']['price'];
+            $this->items[$request->id . '_' . $color]['qty'] -= (int) $currentQty;
         }
-        $this->items[$request->id]['price'] = (int) $request->qty * $this->items[$request->id]['item']['price'];
+        $this->items[$request->id . '_' . $color]['price'] = (int) $request->qty * $this->items[$request->id . '_' . $color]['item']['price'];
     }
 }

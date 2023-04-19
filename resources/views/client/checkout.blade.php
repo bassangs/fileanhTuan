@@ -32,7 +32,7 @@
                 @csrf
 
                 <div class="row">
-                    <div class="col-lg-7 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="checkout__input">
@@ -60,7 +60,7 @@
                             <input type="text" placeholder="Nhập địa chỉ" class="checkout__input__add" name="address" required>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="checkout__order">
                             <h4>Chi tiết đơn hàng</h4>
                             <div class="checkout__order__products">Dòng xe <span>Tổng tiền</span></div>
@@ -70,12 +70,16 @@
                                     $oldCart = Session::get('cart');
                                     $cart = new Cart($oldCart);
                                 @endphp
-                                @foreach ($cart->items as $row)
-                                    <li>{{ $row['item']['name'] }} <span>{{ number_format($row['price'],-3,',',',') }} VND</span></li>
+                                @foreach ($cart->items as $key => $row)
+                                    @php
+                                        $keyColor = explode('_', $key)[1];
+                                    @endphp
+                                    <li>{{ $row['item']['name'] }} ({{ \App\Models\Color::find($keyColor)->name }}) x {{ $row['qty'] }} <span>{{ number_format($row['price'],-3,',',',') }} VND</span></li>
                                 @endforeach
                             </ul>
-                            <div class="checkout__order__total">Phí đặt cọc <span class="total-cart">{{ number_format(0.1 * Session::get('cart')->totalPrice,-3,',',',') }} VND</span></div>
-                            <input type="hidden" id="total" value="{{ 0.1 * Session::get('cart')->totalPrice }}" />
+                            <div class="checkout__order__total">Thành tiền <span class="total-cart">{{ number_format(Session::get('cart')->totalPrice,-3,',',',') }} VND</span></div>
+                            <div class="checkout__order__total">Phí đặt cọc (10% thành tiền) <span class="total-cart">{{ number_format(0.1 * Session::get('cart')->totalPrice,-3,',',',') }} VND</span></div>
+                            <input type="hidden" name="total" value="{{ Session::get('cart')->totalPrice }}" />
                             <button type="submit" class="site-btn">ĐẶT CỌC</button>
                         </div>
                     </div>

@@ -15,6 +15,7 @@
                         <th>Mã đơn hàng</th>
                         <th>Khách hàng</th>
                         <th>Tổng tiền</th>
+                        <th>Tiền cọc</th>
                         <th>Ngày đặt hàng</th>
                         <th>Trạng thái</th>
                         <th>Chức năng</th>
@@ -25,7 +26,8 @@
                         <tr>
                             <td>{{ $row->id }}</td>
                             <td>{{ $row->name }}</td>
-                            <td>{{ number_format($row->thanhtien,-3,',',',') }} VND</td>
+                            <td>{{ number_format($row->total,-3,',',',') }} VND</td>
+                            <td>{{ number_format($row->deposit,-3,',',',') }} VND</td>
                             <td>{{ date('d/m/Y H:i:s',strtotime($row->created_at)) }}</td>
                             <td>
                                 @if ($row->status === 0)

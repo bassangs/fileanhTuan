@@ -32,7 +32,7 @@ Route::namespace('Client')->prefix('/')->group(function () {
     Route::get('product-search','ProductController@search')->name('client.search.product');
     Route::get('product-brand/{brand}','ProductController@brand')->name('client.product.brand');
     Route::get('add-to-cart', 'ProductController@addToCart');
-    Route::get('delete-item/{id}', 'ProductController@deleteItem')->name('delete.item');
+    Route::get('delete-item/{id}/{color}', 'ProductController@deleteItem')->name('delete.item');
     Route::get('shopping-cart', 'OrderController@shopping_cart')->name('client.shopping.cart');
     Route::get('checkout', 'OrderController@checkout')->name('client.checkout');
     Route::post('pay','OrderController@pay')->name('pay');

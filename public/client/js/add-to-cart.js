@@ -1,9 +1,12 @@
 function addToCart(id) {
+    var color = $(`#color-${id}`).val();
+
     $.ajax({
         url: '/add-to-cart',
         type: 'GET',
         data: {
-            'id': id
+            'id': id,
+            'color': color
         },
         success: function(response) {
             if(response.status == 200) {

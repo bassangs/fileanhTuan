@@ -1,4 +1,4 @@
-function changeQty(val, id)
+function changeQty(val, id, color)
 {
     if (val != "" && val <= 0) {
         swal({ title: 'Số lượng tối thiểu là 1', type: 'error' });
@@ -14,7 +14,8 @@ function changeQty(val, id)
         type: 'GET',
         data: {
             'qty': val,
-            'id': id
+            'id': id,
+            'color': color
         },
         success: function(response) {
             if(response.status == 200) {

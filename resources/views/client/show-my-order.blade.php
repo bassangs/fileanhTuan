@@ -30,6 +30,7 @@
                         <tr>
                             <th>STT</th>
                             <th>Dòng xe</th>
+                            <th>Màu sắc</th>
                             <th>Số lượng</th>
                             <th>Đơn giá</th>
                         </tr>
@@ -42,6 +43,7 @@
                             <tr>
                                 <td>{{ $count }}</td>
                                 <td>{{ $order->name }}</td>
+                                <td>{{ \App\Models\Color::find($order->color_id)->name }}</td>
                                 <td>{{ $order->qty }}</td>
                                 <td>{{ number_format($order->price,-3,',',',') }} VND</td>
                             </tr>

@@ -12,7 +12,25 @@
                 </div>
                 <div class="product__item__text">
                     <h6><a href="{{ route('client.product.detail', ['id' => $product->id]) }}">{{ $product->name }}</a></h6>
-                    <h5>{{ number_format($product->price,-3,',',',') }} VND</h5>
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <select class="form-control" id="color-{{ $product->id }}">
+                                        @foreach (explode(',', $product->colors) as $item)
+                                            @php
+                                                $color = \App\Models\Color::find($item);
+                                            @endphp
+                                            <option value="{{ $color->id }}">{{ $color->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-danger">{{ number_format($product->price,-3,',',',') }} VND</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

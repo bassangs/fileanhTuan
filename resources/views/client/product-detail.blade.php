@@ -43,7 +43,15 @@
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
                     <h3>{{ $product->name }}</h3>
-                    <div class="product__details__price">{{ number_format($product->price,-3,',',',') }} VND</div>
+                    <div class="product__details__price text-danger">{{ number_format($product->price,-3,',',',') }} VND</div>
+                    <select class="form-control mb-2" style="width: 30%;" id="color-{{ $product->id }}">
+                        @foreach (explode(',', $product->colors) as $item)
+                            @php
+                                $color = \App\Models\Color::find($item);
+                            @endphp
+                            <option value="{{ $color->id }}">{{ $color->name }}</option>
+                        @endforeach
+                    </select>
                     <a href="javascript:void(0)" onclick="addToCart({{ $product->id }});" class="primary-btn">THÊM GIỎ HÀNG</a> 
                     @if (Auth::check())
                       @if (!in_array($product->id,$wishlist))

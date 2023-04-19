@@ -9,6 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','user_id','total','address','status'];
+    public $incrementing = false;
+    protected $fillable = ['id','user_id','total','address','status','deposit'];
     protected $table = "orders";
 }

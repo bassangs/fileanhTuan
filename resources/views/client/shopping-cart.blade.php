@@ -46,6 +46,7 @@
                                 <th class="shoping__product">Dòng xe</th>
                                 <th width="200">Đơn giá</th>
                                 <th>Số lượng</th>
+                                <th width="200">Màu sắc</th>
                                 <th width="350">Tổng tiền</th>
                                 <th></th>
                             </tr>
@@ -57,7 +58,10 @@
                                 $cart = new Cart($oldCart);
                             @endphp
                             @if (!empty($cart->items))
-                                @foreach ($cart->items as $row)
+                                @foreach ($cart->items as $key => $row)
+                                    @php
+                                        $keyColor = explode('_', $key)[1];
+                                    @endphp
                                     <tr>
                                         <td class="shoping__cart__item">
                                             <img src="{{  asset($row['item']['image']) }}" alt="{{ $row['item']['name'] }}" width="100">
@@ -69,15 +73,21 @@
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">
                                                 <div class="pro-qty">
-                                                    <input type="text" value="{{ $row['qty'] }}" onkeyup="changeQty(this.value, {{ $row['item']['id'] }})">
+                                                    <input type="text" value="{{ $row['qty'] }}" onkeyup="changeQty(this.value, {{ $row['item']['id'] }}, {{ $keyColor }})">
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="shoping__cart__total" id="cart-item-total-{{ $row['item']['id'] }}">
+                                        <td class="shoping__cart__price" style="font-weight: normal;">
+                                            @php
+                                                $color = \App\Models\Color::find($keyColor);
+                                            @endphp
+                                            <div style="background-color: {{ $color->hex }};width: 50px;height:50px;border-radius: 100%;border: 1px solid black;margin:0 auto;"></div> {{ $color->name }}
+                                        </td>
+                                        <td class="shoping__cart__total" id="cart-item-total-{{ $row['item']['id'] . '_' . $keyColor }}">
                                             {{ number_format($row['price'],-3,',',',') }} VND
                                         </td>
                                         <td class="shoping__cart__item__close">
-                                            <a href="{{ route('delete.item', ['id' => $row['item']['id']]) }}"><span class="icon_close"></span></a>
+                                            <a href="{{ route('delete.item', ['id' => $row['item']['id'], 'color' => $keyColor]) }}"><span class="icon_close"></span></a>
                                         </td>
                                     </tr>
                                 @endforeach

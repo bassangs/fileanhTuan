@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->string('id', 50)->primary();
             $table->bigInteger('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('total');
+            $table->bigInteger('total');
             $table->text('address');
             $table->integer('status')->default(0);
             $table->timestamps();

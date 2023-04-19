@@ -116,7 +116,7 @@
                         @foreach ($orders_detail as $product)
                             <div class="row mb-2 mb-sm-0 py-25">
                                 <div class="d-none d-sm-block col-1">{{ $count }}</div>
-                                <div class="col-9 col-sm-5">{{ $product->name }}</div>
+                                <div class="col-9 col-sm-5">{{ $product->name }} ({{ \App\Models\Color::find($product->color_id)->name }})</div>
                                 <div class="d-none d-sm-block col-2">{{ $product->qty }}</div>
                                 <div class="d-none d-sm-block col-2 text-95">{{ number_format($product->price,-3,',',',') }} VND</div>
                                 <div class="col-2 text-secondary-d2">{{ number_format($product->price * $product->qty, -3, ',', ',') }} VND</div>

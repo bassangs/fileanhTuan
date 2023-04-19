@@ -50,8 +50,8 @@ class OrderController extends Controller
     public function show($id)
     {
         $orders_detail = OrderDetail::where('order_id',$id)
-        ->join('products','products.id','=','orders_detail.product_id')
-        ->get(['orders_detail.*','products.name','products.price']);
+        ->join('products','products.id','=','order_details.product_id')
+        ->get(['order_details.*','products.name','products.price']);
         $order = Order::find($id);
         return view('admin.orders.show',['orders_detail' => $orders_detail, 'order' => $order]);
     }
@@ -97,8 +97,8 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $orders_detail = OrderDetail::where('order_id',$id)
-        ->join('products','products.id','=','orders_detail.product_id')
-        ->get(['orders_detail.*','products.name','products.price']);
+        ->join('products','products.id','=','order_details.product_id')
+        ->get(['order_details.*','products.name','products.price']);
         return view('admin.orders.print',compact('order','orders_detail'));
     }
 }
