@@ -86,7 +86,7 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <div id="piechart" style="width: 100%;"></div>
+                <div id="revenueMonthColumnChart" style="width: 100%;"></div>
             </div>
         </div>
     </div>
@@ -123,4 +123,34 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+    <input type="hidden" id="data" value="{{ json_encode($revenueEachMonth) }}" />
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        var arr = [['Tháng', 'Doanh thu', { role: "style" }]];
+        var orders = JSON.parse(document.getElementById("data").value);
+        if (orders.length < 1) {
+            arr.push(['', 0, '#3366CC']);
+        }
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        for(x of orders){
+            arr.push(['Tháng ' + x.month, parseInt(x.total), '#3366CC'])
+        }  
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable(
+                arr
+            );
+
+            var options = {
+                title: 'Thống kê doanh thu theo tháng của năm ' + {{ date('Y') }},
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('revenueMonthColumnChart'));
+
+            chart.draw(data, options);
+        }
+    </script>
 @endsection
