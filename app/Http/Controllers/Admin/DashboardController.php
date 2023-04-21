@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Models\User;
+use App\Models\Order;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -16,9 +18,7 @@ class DashboardController extends Controller
     public function index()
     {
         $revenueEachMonth = [];
-        $revenueToday =  DB::select("SELECT SUM(total) total FROM orders WHERE status = 3 
-        AND DATE_FORMAT(created_at, '%Y-%m-%d') = CURDATE()
-        GROUP BY DATE_FORMAT(created_at,'%d/%m/%Y')");
+        $revenueToday =  Order::whereDate('created_at', Carbon::today())->sum('total');
         $revenueMonth =  DB::select("SELECT SUM(total) total FROM orders WHERE status = 3 
         AND MONTH(created_at) = MONTH(CURRENT_DATE()) AND YEAR(created_at) = YEAR(CURRENT_DATE())
         GROUP BY MONTH(created_at), YEAR(created_at)");

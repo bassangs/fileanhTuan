@@ -34,7 +34,7 @@ class OrderController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $orderId = 'order_' . $this->generateRandomString();
-        $order = Order::create([
+        Order::create([
             'id'      => $orderId,
             'user_id' => Auth::user()->id,
             'total'   => $request->total,
@@ -62,22 +62,28 @@ class OrderController extends Controller
                 'price' => (int) Currency::convert()
                 ->from('VND')
                 ->to('USD')
-                ->amount($row['item']['price'])
+                ->amount($row['item']['price'] * 0.1)
                 ->get(),
                 'qty' => $row['qty']
             ];
         }
+
+        $total = array_reduce(
+            $products['items'],
+            function ($total, $item) {
+                $total += $item['price'] * $item['qty'];
+      
+                return $total;
+            },
+            0
+        );
   
         $products['invoice_id'] = $orderId;
         $products['invoice_description'] = "Pay successful, you get the new Order#{$orderId}";
         $products['return_url'] = route('done.payment.paypal');
         $products['cancel_url'] = route('cancel.payment.paypal');
-        $products['total'] = (int) Currency::convert()
-        ->from('VND')
-        ->to('USD')
-        ->amount($request->total)
-        ->get();
-  
+        $products['total'] = $total;
+
         $paypalModule = new ExpressCheckout;
   
         $res = $paypalModule->setExpressCheckout($products);

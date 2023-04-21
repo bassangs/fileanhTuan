@@ -14,7 +14,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                             Doanh thu hôm nay</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800">{{ number_format($revenueToday[0]->total,-3,',',',') }} VND</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">{{ number_format($revenueToday,-3,',',',') }} VND</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -30,7 +30,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Doanh thu tháng {{ date('n') }}</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800">{{ number_format($revenueMonth[0]->total,-3,',',',') }} VND</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">{{ number_format($revenueMonth[0]->total ?? 0,-3,',',',') }} VND</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -46,7 +46,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Doanh thu năm {{ date('Y') }}</div>
-                        <div class="h6 mb-0 font-weight-bold text-gray-800">{{ number_format($revenueYear[0]->total,-3,',',',') }} VND</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">{{ number_format($revenueYear[0]->total ?? 0,-3,',',',') }} VND</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
