@@ -53,6 +53,10 @@
                 <img src="{{ asset($product->image) }}" alt="Image Preview" class="image-preview__image" style="display:block;" />
                 <span class="image-preview__default-text" style="display:none;">Hình ảnh</span>
             </div>
+            <div class="form-group">
+                <label>Chọn mô hình:</label>
+                <input type="file" name="obj" required/>
+            </div>
             <br />
             <button type="submit" class="btn btn-primary">Cập nhật</button>
           </form>

@@ -48,6 +48,7 @@ class ProductController extends Controller
             //  Let's do everything here
             if ($request->file('image')->isValid()) {
                 $request->image->storeAs('/public/images/products', $request->image->getClientOriginalName());
+                $request->obj->storeAs('/public/objs/products', $request->obj->getClientOriginalName());
                 Product::create([
                    'name' => $request->name,
                    'price' => $request->price,
@@ -56,6 +57,7 @@ class ProductController extends Controller
                    'description' => $request->description,
                    'qty' => $request->qty,
                    'colors' => implode(', ', $request->colors),
+                   'obj' => '/storage/objs/products/' .  $request->obj->getClientOriginalName()
                 ]);
                 toastr()->success('Thêm thành công');
 
@@ -88,13 +90,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        ini_set('post_max_size', '1000M');
+        ini_set('upload_max_filesize', '1000M');
         $product = Product::find($id);
         if ($request->hasFile('image')) {
             //  Let's do everything here
             if ($request->file('image')->isValid()) {
                 $request->image->storeAs('/public/images/products', $request->image->getClientOriginalName());
                 $product->image = '/storage/images/products/' .  $request->image->getClientOriginalName();
+            }
+        }
+        if ($request->hasFile('obj')) {
+            //  Let's do everything here
+            if ($request->file('obj')->isValid()) {
+                $request->obj->storeAs('/public/objs/products', $request->obj->getClientOriginalName());
+                $product->obj = '/storage/objs/products/' .  $request->obj->getClientOriginalName();
             }
         }
         $product->name = $request->name;

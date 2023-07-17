@@ -140,4 +140,10 @@ class ProductController extends Controller
             'productId' => $request->id . '_' . $request->color
         ]);
     }
+
+    public function obj($id)
+    {
+        $product = Product::find($id);
+        return view('client.obj',compact('product'));
+    }
 }

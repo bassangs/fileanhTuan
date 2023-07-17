@@ -29,6 +29,7 @@ Route::namespace('Client')->prefix('/')->group(function () {
     Route::get('introduce', 'HomeController@introduce')->name('client.introduce');
     Route::get('product', 'ProductController@product')->name('client.product');
     Route::get('product-detail/{id}', 'ProductController@product_detail')->name('client.product.detail');
+    Route::get('product-obj/{id}', 'ProductController@obj')->name('client.product.obj');
     Route::get('product-search','ProductController@search')->name('client.search.product');
     Route::get('product-brand/{brand}','ProductController@brand')->name('client.product.brand');
     Route::get('add-to-cart', 'ProductController@addToCart');

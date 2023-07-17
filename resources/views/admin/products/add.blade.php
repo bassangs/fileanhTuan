@@ -53,6 +53,10 @@
                 <img src="" alt="Image Preview" class="image-preview__image" />
                 <span class="image-preview__default-text">Hình ảnh</span>
             </div>
+            <div class="form-group">
+                <label>Chọn mô hình:</label>
+                <input type="file" name="obj" required/>
+            </div>
             <br />
             <button type="submit" class="btn btn-primary">Thêm</button>
           </form>
