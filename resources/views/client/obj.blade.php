@@ -5,6 +5,8 @@
     <meta charset=UTF-8 />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js" integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg==" crossorigin="anonymous"></script>
     <script src="http://mamboleoo.be/learnThree/demos/OBJLoader.js"></script>
+    <link rel="shortcut icon" href="{{ asset('client/img/logo.png') }}" type="image/png">
+    <title>Xe Tốt - mô hình {{ $product->name }}</title>
     <style>
         body,
         html {
