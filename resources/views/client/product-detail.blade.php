@@ -53,7 +53,9 @@
                         @endforeach
                     </select>
                     <a href="javascript:void(0)" onclick="addToCart({{ $product->id }});" class="primary-btn">THÊM GIỎ HÀNG</a>
-                    <a href="{{ route('client.product.obj',['id' => $product->id]) }}" class="primary-btn" style="background-color: green;" target="_blank">XEM MÔ HÌNH</a> 
+                    @if (!empty($product->obj))
+                        <a href="{{ route('client.product.obj',['id' => $product->id]) }}" class="primary-btn" style="background-color: green;" target="_blank">XEM MÔ HÌNH</a> 
+                    @endif
                     @if (Auth::check())
                       @if (!in_array($product->id,$wishlist))
                         <a href="{{ route('client.add.wishlist',['id' => $product->id]) }}"><button type="button" class="btn btn-danger" style="padding:0.84rem;">YÊU THÍCH</button></a>

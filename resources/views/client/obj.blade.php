@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mô hình xe {{ $product->name }}</title>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+    <meta charset=UTF-8 />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js" integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg==" crossorigin="anonymous"></script>
     <script src="http://mamboleoo.be/learnThree/demos/OBJLoader.js"></script>
     <style>
         body,
@@ -17,57 +14,53 @@
             margin: 0;
             overflow: hidden;
         }
-
-        canvas {
-            width: 100%;
-        }
     </style>
 </head>
 
 <body>
-    <canvas id="scene"></canvas>
-    <script>
-        var scene = new THREE.Scene();
-        var renderer, camera, car;
+    <script type="module">
+        import { OrbitControls } from '{{ asset("client/js/OrbitControls.js") }}';
 
-        var ww = window.innerWidth,
-            wh = window.innerHeight;
+        let scene, camera, renderer;
 
-        renderer = new THREE.WebGLRenderer({
-            canvas: document.getElementById('scene')
-        });
-        renderer.setSize(ww, wh);
+        function init() {
 
-        camera = new THREE.PerspectiveCamera(50, ww / wh, 0.1, 10000);
-        camera.position.set(0, 0, 500);
-        scene.add(camera);
+            scene = new THREE.Scene();
 
-        //Add a light in the scene
-        directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-        directionalLight.position.set(0, 0, 350);
-        directionalLight.lookAt(new THREE.Vector3(0, 0, 0));
-        scene.add(directionalLight);
+            camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 5000);
+            camera.rotation.y = 45 / 180 * Math.PI;
+            camera.position.x = 800;
+            camera.position.y = 100;
+            camera.position.z = 800;
 
-        var render = function() {
-            requestAnimationFrame(render);
-            car.rotation.y += .01;
-            renderer.render(scene, camera);
-        };
+            var light = new THREE.AmbientLight(0x404040);
+            scene.add(light);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            scene.add(directionalLight);
 
-        var loadOBJ = function() {
-            //Manager from ThreeJs to track a loader and its status
-            var manager = new THREE.LoadingManager();
-            //Loader for Obj from Three.js
-            var loader = new THREE.OBJLoader(manager);
-            //Launch loading of the obj file, addCarInScene is the callback when it's ready 
-            loader.load(window.location.origin + '{{ $product->obj }}', function(object) {
-                car = object;
-                scene.add(car);
-                render();
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
             });
-        };
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
 
-        loadOBJ();
+            var controls = new OrbitControls(camera, renderer.domElement);
+            controls.addEventListener('change', renderer);
+
+            var manager = new THREE.LoadingManager();
+            var loader = new THREE.OBJLoader(manager);
+            loader.load(window.location.origin + '{{ $product->obj }}', function(object) {
+                scene.add(object);
+                animate();
+            });
+        }
+
+        function animate() {
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        
+        init();
     </script>
 </body>
 
